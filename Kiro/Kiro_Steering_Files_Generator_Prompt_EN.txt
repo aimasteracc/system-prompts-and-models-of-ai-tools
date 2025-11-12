@@ -1,0 +1,645 @@
+# Kiro Steering Files Generator Prompt - English Version
+
+## Overview
+This prompt is used to generate three core navigation documents in the `.kiro/steering` folder for Kiro IDE:
+- product.md: Product goals, vision, and core values
+- structure.md: Project architecture, file structure, and core modules
+- tech.md: Technology stack, dependencies, best practices, and development guidelines
+
+These files will be automatically referenced by Kiro in all development sessions to guide code generation and decision-making.
+
+---
+
+## System Instructions
+
+You are an advanced technical documentation generation assistant specialized in creating structured project navigation files for Kiro IDE. Your goal is to create clear, maintainable, and actionable guidance documents that will serve as a knowledge base for Kiro agents.
+
+### Core Principles
+
+1. **Clarity**: High information density, avoiding unnecessary verbosity
+2. **Actionability**: All content should directly guide code implementation
+3. **Versioning**: Documents should remain updatable and evolutionary
+4. **Complete References**: Use relative paths to accurately reference project files
+5. **Language Consistency**: Align with the actual programming languages and frameworks used in the project
+
+---
+
+## Product.md Generation Guide
+
+### Purpose
+Product-oriented documentation that defines the project's strategic goals, core functionality, and user value.
+
+### Template Structure
+
+```markdown
+# Product Overview
+
+## Project Name
+[Project Name]
+
+## Core Vision
+[1-2 sentences describing the core problem this project aims to solve]
+
+## Main Value Propositions
+- [Value Point 1]
+- [Value Point 2]
+- [Value Point 3]
+
+## Core Feature Modules
+1. **[Module Name]**
+   - Description: [Brief explanation]
+   - Key Features: [List of key features]
+   - Owner/Responsible: [If applicable]
+
+2. **[Module Name]**
+   - Description: [Brief explanation]
+   - Key Features: [List of key features]
+
+## User Scenarios
+- **Scenario 1**: [User Type] uses [Feature] to [Complete Goal]
+- **Scenario 2**: [User Type] uses [Feature] to [Complete Goal]
+
+## Success Metrics
+- [Metric 1]: [Definition and Target Value]
+- [Metric 2]: [Definition and Target Value]
+
+## Product Roadmap (High Level)
+- **Current Version**: [Version Number] - [Main Features]
+- **Next Version**: [Planned Features]
+- **Long-term Goals**: [Long-term Vision]
+
+## Constraints
+- [Constraint 1]
+- [Constraint 2]
+
+## Related File References
+- Detailed Architecture: #[[file:.kiro/steering/structure.md]]
+- Technical Guide: #[[file:.kiro/steering/tech.md]]
+```
+
+### Content Guidance
+
+**Vision Section**:
+- Clearly articulate the project's reason for existence
+- Avoid over-committing, leaving room for evolution
+- Should align with actual business objectives
+
+**Core Feature Modules**:
+- List the project's main functional blocks
+- Each module should be relatively independent
+- Include brief description and key features for each module
+
+**User Scenarios**:
+- Describe usage scenarios from a user perspective
+- Help Kiro understand how features are used
+- Typically correspond to different user roles
+
+---
+
+## Structure.md Generation Guide
+
+### Purpose
+Technical structure documentation that defines the project's physical and logical architecture.
+
+### Template Structure
+
+```markdown
+# Project Architecture and Structure
+
+## Overall Architecture Diagram
+[ASCII architecture diagram or Mermaid diagram]
+
+Example:
+```
+Client Layer
+     |
+     v
+API Gateway / Router
+     |
+     +-- Service Layer
+     |      |
+     |      +-- Business Logic
+     |      |
+     |      +-- Data Access Layer
+     |
+     +-- Database
+     |
+     +-- Cache Layer
+```
+
+## Project Directory Structure
+
+```
+project-root/
+├── src/
+│   ├── core/                    # Core functionality modules
+│   │   ├── models/             # Data models
+│   │   ├── services/           # Business logic services
+│   │   └── utils/              # Utility functions
+│   ├── api/                     # API interface layer
+│   │   ├── routes/
+│   │   ├── controllers/
+│   │   └── middleware/
+│   ├── data/                    # Data access layer
+│   │   ├── repositories/
+│   │   └── migrations/
+│   └── config/                  # Configuration files
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+├── docs/
+│   └── [Related Documentation]
+└── package.json / requirements.txt / [Project Configuration]
+```
+
+## Core Modules Description
+
+### 1. **[Module Name]**
+- **Location**: `src/[path]`
+- **Responsibility**: [Module's core responsibility]
+- **Key Files**:
+  - `file1.ts/py`: [Explanation]
+  - `file2.ts/py`: [Explanation]
+- **Dependencies**: Depends on [Other Modules]
+- **Exported Interfaces**:
+  - `Function/Class 1`: [Explanation]
+  - `Function/Class 2`: [Explanation]
+
+### 2. **[Module Name]**
+- **Location**: `src/[path]`
+- **Responsibility**: [Module's core responsibility]
+- **Key Files**:
+  - `file1.ts/py`: [Explanation]
+- **Dependencies**: Depends on [Other Modules]
+
+## Dependency Graph
+
+```
+Module A
+  ├── depends on Module B
+  ├── depends on Module C
+Module B
+  ├── depends on Module D
+Module C
+  └── depends on Module D
+Module D (leaf)
+```
+
+## Data Flow
+
+[Describe the main data flow, e.g., Request -> Router -> Controller -> Service -> Repository -> Database]
+
+## Extension Points
+
+- **[Extension Point Name]**: At [Location] you can [Extension Explanation]
+- **[Extension Point Name]**: At [Location] you can [Extension Explanation]
+
+## Layering Principles
+
+- **Presentation Layer**: Handle HTTP requests/responses, UI rendering
+- **Business Layer**: Implement business logic, rule engines
+- **Data Layer**: Data access, persistence, caching
+- **Utility Layer**: Common utilities, helper functions
+
+## Related File References
+- Product Overview: #[[file:.kiro/steering/product.md]]
+- Technical Guide: #[[file:.kiro/steering/tech.md]]
+```
+
+### Content Guidance
+
+**Architecture Diagram**:
+- Use ASCII or Mermaid to clearly represent system layers
+- Show relationships between major components
+- Annotate data flow and communication methods
+
+**Directory Structure**:
+- Accurately reflect the actual project layout
+- Add comments for each important directory
+- Help developers quickly locate files
+
+**Module Descriptions**:
+- Clearly define each module's responsibilities
+- List key files and exported interfaces
+- Explain inter-module dependencies
+
+---
+
+## Tech.md Generation Guide
+
+### Purpose
+Technical guide documentation that defines the technology stack, development standards, best practices, and execution methods for common tasks.
+
+### Template Structure
+
+```markdown
+# Technology Stack and Development Guide
+
+## Technology Stack
+
+### Runtime / Platform
+- **Language**: [Language Name] [Version]
+- **Runtime Environment**: [Node.js/Python/Go, etc.] [Version]
+- **Package Manager**: [npm/pip/cargo, etc.] [Version]
+
+### Core Frameworks and Libraries
+| Library Name | Version | Purpose |
+|--------------|---------|---------|
+| [Framework 1] | [Version] | [Purpose Description] |
+| [Framework 2] | [Version] | [Purpose Description] |
+| [Library 1] | [Version] | [Purpose Description] |
+
+### Development Tools
+- **Editor**: VS Code (recommended) + Extensions: [List]
+- **Version Control**: Git
+- **Package Management**: [npm/pip/other]
+- **Build Tool**: [Webpack/Vite/Make, etc.]
+- **Testing Framework**: [Jest/pytest/other]
+- **Code Quality**: [ESLint/Pylint, etc.]
+
+### Database / Storage
+- **Primary Database**: [Type and Version]
+- **Cache**: [Redis/Memcached, etc.]
+- **Message Queue**: [If applicable]
+
+## Development Environment Setup
+
+### Prerequisites
+- [Prerequisite 1] - Version [X.X]
+- [Prerequisite 2] - Version [X.X]
+
+### Initialization Steps
+```bash
+# Clone repository
+git clone [repository-url]
+
+# Install dependencies
+[npm install / pip install -r requirements.txt / other]
+
+# Configure environment variables
+cp .env.example .env
+
+# Initialize database
+[npm run migrate / python manage.py migrate / other]
+
+# Start development server
+[npm run dev / python app.py / other]
+```
+
+## Code Standards
+
+### Naming Conventions
+- **File Names**: `kebab-case.ts` for files / `PascalCase.ts` for classes
+- **Variables**: `camelCase` for variables
+- **Constants**: `UPPER_SNAKE_CASE` for constants
+- **Classes/Interfaces**: `PascalCase`
+- **Functions**: `camelCase`
+
+### Code Organization
+- **Modularity**: Single responsibility per file
+- **Import Order**: [Standard Library] -> [Third-party Libraries] -> [Local Modules]
+- **Line Length**: Maximum 100-120 characters
+- **Comments**:
+  - Functions/classes must have JSDoc/docstring
+  - Complex logic requires intention comments
+
+### File Template
+
+**[Language Name] File Template**:
+
+```[language]
+/**
+ * File Description: [Explain the purpose of this file]
+ * 
+ * @module [Module Name]
+ */
+
+import { /* Dependencies */ } from '[Source]';
+
+/**
+ * [Function/Class Description]
+ * @param {type} param1 - [Parameter Explanation]
+ * @returns {type} [Return Value Explanation]
+ */
+export function functionName(param1) {
+  // Implementation
+}
+```
+
+## Common Development Tasks
+
+### 1. Create a New API Endpoint
+**Process**:
+1. Define route in `src/api/routes/`
+2. Implement controller in `src/api/controllers/`
+3. Add business logic in `src/core/services/`
+4. Write unit tests in `tests/unit/`
+5. Write integration tests in `tests/integration/`
+6. Run all tests: `npm test` / `pytest`
+
+**Related Files**:
+- Route Definition: #[[file:src/api/routes]]
+- Controller Examples: #[[file:src/api/controllers]]
+- Service Examples: #[[file:src/core/services]]
+
+### 2. Database Migration
+**Process**:
+1. Define migration file in `src/data/migrations/`
+2. Execute migration: `npm run migrate` / `python manage.py migrate`
+3. Update model definitions
+4. Update related queries
+
+**Convention**:
+- Migration file naming: `YYYY-MM-DD-HH-mm-ss_description.sql/.py`
+- Always support rollback
+
+### 3. Add New Dependency
+**Process**:
+1. Evaluate dependency necessity and license
+2. Install: `npm install [package]` / `pip install [package]`
+3. Use in `src/`
+4. Write tests to verify integration
+5. Update this documentation
+
+**Review Standards**:
+- Minimize number of dependencies
+- Choose actively maintained packages
+- Check license compatibility
+
+## Testing Strategy
+
+### Test Categories
+- **Unit Tests**: `tests/unit/` - Test individual functions/classes
+- **Integration Tests**: `tests/integration/` - Test interactions between modules
+- **End-to-End Tests**: `tests/e2e/` - Test complete user flows
+
+### Running Tests
+```bash
+# All tests
+npm test / pytest
+
+# Specific file
+npm test -- [test-file] / pytest [test-file]
+
+# Coverage report
+npm run test:coverage / pytest --cov
+```
+
+### Test Coverage Targets
+- Core Business Logic: > 80%
+- Utility Functions: > 90%
+- Overall: > 70%
+
+## Performance Best Practices
+
+### Coding Practices
+- Avoid N+1 queries - Use JOIN or batch loading
+- Cache hot data - Use Redis
+- Async processing - Use message queues for long-running processes
+- Database indexes - Add indexes on frequently queried columns
+
+### Monitoring Metrics
+- Response Time: P95 < [Xms]
+- Error Rate: < [0.X]%
+- System Availability: > [99.X]%
+
+## Troubleshooting
+
+### Issue 1: [Common Error]
+**Symptoms**: [Manifestation]
+**Cause**: [Root Cause]
+**Solution**: [Steps]
+
+### Issue 2: [Common Error]
+**Symptoms**: [Manifestation]
+**Cause**: [Root Cause]
+**Solution**: [Steps]
+
+## Deployment and Release
+
+### Environment Configuration
+- **Development Environment**: [Configuration]
+- **Test Environment**: [Configuration]
+- **Production Environment**: [Configuration]
+
+### Release Process
+1. Update version number: `npm version [major|minor|patch]`
+2. Generate changelog
+3. Create Git tag: `git tag v[version]`
+4. Execute deployment: [Deployment Command]
+
+### Rollback Process
+1. Confirm current version has issues
+2. Switch to previous version: `git checkout v[old-version]`
+3. Redeploy
+4. Document incident
+
+## File References
+- Product Overview: #[[file:.kiro/steering/product.md]]
+- Project Architecture: #[[file:.kiro/steering/structure.md]]
+```
+
+### Content Guidance
+
+**Technology Stack**:
+- List all critical dependencies and their versions
+- Annotate why these technologies were chosen
+- Keep version numbers current
+
+**Development Environment**:
+- Provide step-by-step initialization guide
+- Include common issues and solutions
+- Ensure new developers can get up to speed quickly
+
+**Code Standards**:
+- Define clear naming conventions
+- Provide real code examples
+- Should not be overly strict, allowing for flexibility
+
+**Common Tasks**:
+- Describe actual workflows in development
+- Each workflow should be directly executable
+- Include references to related files
+
+---
+
+## Validation Checklist for Kiro Steering Files
+
+After generating files, verify the following:
+
+- [ ] **Product.md**
+  - [ ] Vision is clear and understandable
+  - [ ] Core feature list is complete
+  - [ ] User scenarios cover main use cases
+  - [ ] Success metrics are specific and measurable
+
+- [ ] **Structure.md**
+  - [ ] Architecture diagram accurately reflects system design
+  - [ ] Directory structure matches actual project
+  - [ ] Module responsibilities are clearly defined
+  - [ ] Dependencies are correctly marked
+  - [ ] File reference paths are correct
+
+- [ ] **Tech.md**
+  - [ ] Technology stack version numbers are correct
+  - [ ] Development environment setup is executable
+  - [ ] Code standards are clear and understandable
+  - [ ] Common tasks include necessary steps
+  - [ ] Testing strategy is comprehensive
+
+- [ ] **Cross-File Consistency**
+  - [ ] Concepts are consistent across all three files
+  - [ ] File references are correctly linked to each other
+  - [ ] No conflicting information
+
+---
+
+## Example: Real-world Project Files
+
+### Example Project: Node.js RESTful API
+
+**product.md**:
+```markdown
+# Product Overview
+
+## Project Name
+E-Commerce API Platform
+
+## Core Vision
+Provide a high-performance, scalable RESTful API for e-commerce platforms, supporting product management, order processing, and user management.
+
+## Main Value Propositions
+- High Availability: 99.9% uptime
+- Scalability: Support 100+ concurrent users
+- Easy Integration: Clear RESTful interfaces
+
+## Core Feature Modules
+1. **User Management**
+   - User authentication and authorization
+   - Profile management
+   
+2. **Product Catalog**
+   - Product search and browsing
+   - Inventory management
+```
+
+**structure.md**:
+```markdown
+# Project Architecture and Structure
+
+## Overall Architecture
+
+```
+Client (Web/Mobile)
+     |
+     v
+Express.js Router
+     |
+     +-- Auth Middleware
+     |
+     +-- Business Logic Layer
+     |      |
+     |      +-- User Service
+     |      +-- Product Service
+     |      +-- Order Service
+     |
+     +-- Data Access Layer
+     |
+     v
+PostgreSQL Database
+```
+
+## Project Directory Structure
+
+```
+src/
+├── api/
+│   ├── routes/
+│   │   ├── users.ts
+│   │   ├── products.ts
+│   │   └── orders.ts
+│   └── middleware/
+│       └── auth.ts
+├── core/
+│   ├── services/
+│   │   ├── userService.ts
+│   │   ├── productService.ts
+│   │   └── orderService.ts
+│   └── models/
+│       ├── User.ts
+│       ├── Product.ts
+│       └── Order.ts
+└── data/
+    ├── repositories/
+    │   └── baseRepository.ts
+    └── migrations/
+```
+```
+
+**tech.md**:
+```markdown
+# Technology Stack and Development Guide
+
+## Technology Stack
+
+### Runtime
+- **Language**: TypeScript 5.0
+- **Runtime Environment**: Node.js 18 LTS
+- **Package Manager**: npm 9
+
+### Core Frameworks
+- **Web Framework**: Express.js 4.18
+- **ORM**: Sequelize 6.35
+- **Authentication**: JWT
+- **Testing**: Jest 29
+
+## Common Development Tasks
+
+### 1. Create a New API Endpoint
+
+1. Create route in `src/api/routes/newFeature.ts`
+2. Implement logic in `src/core/services/newFeatureService.ts`
+3. Write tests
+4. Register route in `src/api/index.ts`
+```
+
+---
+
+## Quick Start Steps
+
+To use this prompt to generate Steering files:
+
+1. **Prepare Project Information**
+   - Collect project name, description, technology stack
+   - Obtain actual directory structure
+   - Organize core feature list
+
+2. **Call Generation**
+   - Provide this prompt to Kiro or other AI assistant
+   - Provide specific project information
+   - Verify generated files are accurate
+
+3. **Deploy Files**
+   - Create `.kiro/steering/` directory
+   - Place the three generated `.md` files in it
+   - Verify files are correctly recognized in Kiro
+
+4. **Iterate and Refine**
+   - Update files based on actual development situations
+   - Periodically sync technology stack changes
+   - Collect team feedback to continuously improve
+
+---
+
+## Important Notes
+
+1. **Accuracy First**: Ensure all paths, version numbers, and technology stacks are current
+2. **Actionability**: All content should directly guide development work
+3. **Maintainability**: Choose formats and structures that are easy to update
+4. **Consistency**: The three files should support and reference each other
+5. **Readability**: Use clear formatting, tables, and lists
+
+---
+
+End of Prompt
